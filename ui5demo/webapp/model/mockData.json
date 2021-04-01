@@ -1,0 +1,218 @@
+{
+    "company": [
+        {
+            "text": "현대자동차",
+            "key": 100
+        },
+        {
+            "text": "기아자동차",
+            "key": 200
+        }
+    ],
+    "purposeOfCourse": [
+        {
+            "text": "사내교육",
+            "key": "in"
+        },
+        {
+            "text": "사외교육",
+            "key": "out"
+        }
+    ],
+    "typeOfCourse": [
+        {
+            "text": "집합",
+            "key": "off"
+        },
+        {
+            "text": "이러닝",
+            "key": "on"
+        }
+    ],
+    "requiredOfCourse": [
+        {
+            "text": "법정 필수",
+            "key": "Y"
+        },
+        {
+            "text": "법정 자격",
+            "key": "N"
+        }
+    ],
+    "targetOfCourse": [
+        {
+            "text": "일반",
+            "key": "normal"
+        },
+        {
+            "text": "임원",
+            "key": "executive"
+        }
+    ],
+    "daysOfCourse": [
+        {
+            "text": "0",
+            "key": "0"
+        },
+        {
+            "text": "1",
+            "key": "1"
+        },
+        {
+            "text": "2",
+            "key": "2"
+        },
+        {
+            "text": "3",
+            "key": "3"
+        },
+        {
+            "text": "4",
+            "key": "4"
+        },
+        {
+            "text": "5",
+            "key": "5"
+        },
+        {
+            "text": "6",
+            "key": "6"
+        },
+        {
+            "text": "7",
+            "key": "7"
+        },
+        {
+            "text": "8",
+            "key": "8"
+        },
+        {
+            "text": "9",
+            "key": "9"
+        }
+    ],
+    "managementOfCourse": [
+        {
+            "text": "인재개발원",
+            "key": "1"
+        },
+        {
+            "text": "미래설계원",
+            "key": "2"
+        }
+    ],
+    "insuranceOfCourse": [
+        {
+            "text": "YES",
+            "key": "Y"
+        },
+        {
+            "text": "NO",
+            "key": "N"
+        }
+    ],
+    "intranetOfCourse": [
+        {
+            "text": "YES",
+            "key": "Y"
+        },
+        {
+            "text": "NO",
+            "key": "N"
+        }
+    ],
+    "categoryOfCourse": [
+        {
+            "text": "공통",
+            "key": "common"
+        },
+        {
+            "text": "직무",
+            "key": "duty"
+        }
+    ],
+    "currentPerson": [
+        {
+            "text": "물류운영팀-강동원",
+            "key": "01",
+            "user": "00734725",
+            "userName": "강동원"
+        },
+        {
+            "text": "물류운영팀 팀장-신혜성",
+            "key": "03",
+            "user": "00722225",
+            "userName": "신혜성"
+        },
+        {
+            "text": "국내지원사업본부 담당자-이재룡",
+            "key": "05",
+            "user": "00651941",
+            "userName": "이재룡"
+        },
+        {
+            "text": "국내지원사업본부 팀장-허준호",
+            "key": "07",
+            "user": "00630666",
+            "userName": "허준호"
+        },
+        {
+            "text": "인재개발팀 담당자-닉쿤",
+            "key": "09",
+            "user": "00727182",
+            "userName": "닉쿤"
+        },
+        {
+            "text": "인재개발팀 팀장-심혜진",
+            "key": "11",
+            "user": "00718525",
+            "userName": "심혜진"
+        },
+        {
+            "text": "사업 계획 확정 마감",
+            "key": "13"
+        }
+    ],
+    "CompDivInfo": [
+        {
+            "text": "기아차/국내사업본부-K0120000",
+            "key": "K0120000"
+        },
+        {
+            "text": "기아차/경영지원본부-K0110000",
+            "key": "K0110000"
+        },
+        {
+            "text": "기아차/ICT본부-K0130000",
+            "key": "K0130000"
+        },
+        {
+            "text": "기아차/국내생산담당-K0140000",
+            "key": "K0140000"
+        },
+        {
+            "text": "기아차/유럽본부-K0150000",
+            "key": "K0150000"
+        },     
+        {
+            "text": "현대차/경영지원본부-H0110000",
+            "key": "H0110000"
+        },
+        {
+            "text": "현대차/국내사업본부-H0120000",
+            "key": "H0120000"
+        },
+        {
+            "text": "현대차/ICT본부-H0130000",
+            "key": "H0130000"
+        },
+        {
+            "text": "현대차/1공장-H0141000",
+            "key": "H0141000"
+        },
+        {
+            "text": "현대차/유럽본부-H0150000",
+            "key": "H0150000"
+        }        
+    ]
+}

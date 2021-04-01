@@ -1,0 +1,181 @@
+<mvc:View controllerName="hkmc.poc.ns.ui5demo.controller.CreateTODiv2" displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:micro="sap.suite.ui.microchart"
+    xmlns:ui="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:layout="sap.ui.layout"
+    xmlns:uxap="sap.uxap"
+    xmlns="sap.m">
+    <Page id="page" class="pageMain" showHeader="false">
+        <uxap:ObjectPageLayout id="id-ObjectPageLayout-ex" class="objectPageLayoutProfile" alwaysShowContentHeader="true" headerContentPinnable="false" toggleHeaderOnTitleClick="false" enableLazyLoading="true" useIconTabBar="true">
+            <uxap:headerTitle>
+                <uxap:ObjectPageDynamicHeaderTitle>
+                    <uxap:expandedHeading>
+                        <FlexBox fitContainer="true" alignItems="Center">
+                            <Title text="사업부별 T/O배분" wrapping="false" class="expandHeadingTitle" />
+                        </FlexBox>
+                    </uxap:expandedHeading>
+                    <uxap:snappedHeading>
+                        <FlexBox fitContainer="true" alignItems="Center">
+                            <Title text="사업부별 T/O배분" wrapping="true" class="expandHeadingTitle" />
+                        </FlexBox>
+                    </uxap:snappedHeading>
+                    <uxap:actions>
+                    </uxap:actions>
+                </uxap:ObjectPageDynamicHeaderTitle>
+            </uxap:headerTitle>
+            <uxap:headerContent>
+                <Panel>
+                    <HBox justifyContent="SpaceBetween" class="profileContent">
+                        <VBox class="labelDetail">
+                            <Label text="승진대상년도" class="labelName" />
+                            <Label text="2021" class="labelContent" />
+                        </VBox>
+                        <VBox class="labelDetail">
+                            <Label text="회사명" class="labelName" />
+                            <Label text="기아모터스(K200)" class="labelContent" />
+                        </VBox>
+                        <VBox class="labelDetail">
+                            <Label text="승진본부" class="labelName" />
+                            <Label id="DIVNAMEID" text="{DIVNAME}" class="labelContent" />                        
+                        </VBox>
+                        <VBox class="labelDetail">
+                            <Label text="직군" class="labelName" />
+                            <Label text="일반직" class="labelContent" />
+                        </VBox>
+                        <VBox class="labelDetail"></VBox>
+                        <VBox class="labelDetail"></VBox>
+                        <VBox class="labelDetail"></VBox>
+                        <VBox class="labelDetail"></VBox>
+                    </HBox>
+                </Panel>
+            </uxap:headerContent>
+            <uxap:sections>
+                <uxap:ObjectPageSection visible="true" showTitle="false" class="objectPageSectionContent">
+                    <uxap:subSections>
+                        <uxap:ObjectPageSubSection title="Subsection 1.1" titleUppercase="false">
+                            <uxap:blocks>
+                                <HBox class="hboxTable">
+                                    <ui:Table id="readonly_eduBiz" rows="{newEduBiz2>/}" paste="onPaste" ariaLabelledBy="title" visibleRowCount="{= ${newEduBiz2>/}.length}">
+                                        <ui:extension>
+                                            <OverflowToolbar>
+                                                <ToolbarSpacer />
+                                                <ToolbarSpacer />
+                                                <Select id="selectDivision" forceSelection="true" change="onChangeDiv" items="{DivInfo>/}">
+                                                    <core:Item key="{DivInfo>key}" text="{DivInfo>text}" />
+                                                </Select>
+                                                <Button icon="sap-icon://save" press="onInitData" type="Transparent" text="데이타 저장" />
+                                                <Button icon="sap-icon://sys-add" press="onAddRows" type="Transparent" text="라인 추가" />
+                                                <Button icon="sap-icon://sys-minus" press="onDeleteRows" type="Transparent" text="라인 삭제" />
+                                                <Button icon="sap-icon://collections-management" press="onCalculateData" type="Transparent" text="비율/총계" />
+                                                <Button icon="sap-icon://nav-back" press="onCancel" type="Transparent" text="Back" />
+
+                                            </OverflowToolbar>
+                                        </ui:extension>
+
+                                        <ui:columns>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center">
+                                                <Label text="승진대상년도" />
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMYY}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" visible="false">
+                                                <Label text="승진대상사업부" />
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMDIV}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" visible="false">
+                                                <Label text="일련번호" />
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMSNO}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" visible="false">
+                                                <Label text="승진대상사업부-1" />
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMDEP1}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" visible="false">
+                                                <Label text="승진대상사업부-2" />
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMDEP2}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center">
+                                                <Label text="승진구분" />
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMTYP}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" headerSpan="3">
+                                                <ui:multiLabels>
+                                                    <Label id="DEPTNAME1-1" text="{DEPNAME1}" textAlign="Center" width="100%" class="tableHeaderWrap" />
+                                                    <Label text="배분T/O" textAlign="Center" width="100%" />
+                                                </ui:multiLabels>
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMHDL1}" />
+                                                </ui:template>
+                                            </ui:Column>
+
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center">
+                                                <ui:multiLabels>
+                                                    <Label id="DEPTNAME1-2" text="{DEPNAME1}" textAlign="Center" width="100%" class="tableHeaderWrap" />
+                                                    <Label text="대상" textAlign="Center" width="100%" />
+                                                </ui:multiLabels>
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMTGL1}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center">
+                                                <ui:multiLabels>
+                                                    <Label id="DEPTNAME1-3" text="{DEPNAME1}" textAlign="Center" width="100%" class="tableHeaderWrap" />
+                                                    <Label text="비율" textAlign="Center" width="100%" />
+                                                </ui:multiLabels>
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMRIO1}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" headerSpan="3">
+
+                                                <ui:multiLabels>
+                                                    <Label id="DEPTNAME2-1" text="{DEPNAME2}" textAlign="Center" width="100%" class="tableHeaderWrap" />
+                                                    <Label text="배분T/O 2" textAlign="Center" width="100%" />
+                                                </ui:multiLabels>
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMHDL2}" />
+                                                </ui:template>
+                                            </ui:Column>
+
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center">
+                                                <ui:multiLabels>
+                                                    <Label id="DEPTNAME2-2" text="{DEPNAME2}" textAlign="Center" width="100%" class="tableHeaderWrap" />
+                                                    <Label text="대상 2" textAlign="Center" width="100%" />
+                                                </ui:multiLabels>
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMTGL2}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                            <ui:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center">
+                                                <ui:multiLabels>
+                                                    <Label id="DEPTNAME2-3" text="{DEPNAME2}" textAlign="Center" width="100%" class="tableHeaderWrap" />
+                                                    <Label text="비율 2" textAlign="Center" width="100%" />
+                                                </ui:multiLabels>
+                                                <ui:template>
+                                                    <Input value="{newEduBiz2>PROMRIO2}" />
+                                                </ui:template>
+                                            </ui:Column>
+                                        </ui:columns>
+                                    </ui:Table>
+                                </HBox>
+                            </uxap:blocks>
+                        </uxap:ObjectPageSubSection>
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+            </uxap:sections>
+        </uxap:ObjectPageLayout>
+    </Page>
+</mvc:View>

@@ -1,0 +1,16 @@
+{
+  "destinations": [
+    {
+      "name": "odata-hkmc",
+      "url": "https://hkmc-trial-srv.cfapps.eu10.hana.ondemand.com"
+    },
+    {
+      "name": "hcodata",
+      "url": "https://hkmchc-srv-zany-possum-cn.cfapps.eu10.hana.ondemand.com"
+    },
+    {
+      "name": "hcodata2",
+      "url": "https://hkmcpoc-srv-daring-tiger-pe.cfapps.eu10.hana.ondemand.com"
+    }
+  ]
+}

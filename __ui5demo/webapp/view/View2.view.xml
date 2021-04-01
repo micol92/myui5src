@@ -1,0 +1,145 @@
+<mvc:View 
+    controllerName="hkmc.poc.ns.ui5demo.controller.View2" 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:m="sap.m" 
+    xmlns:f="sap.f" 
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"	
+    xmlns:fb="sap.ui.comp.filterbar" 
+    xmlns:html="http://www.w3.org/1999/xhtml">
+	<f:DynamicPage id="eduBizMain">
+
+		<f:content>
+ 	        <t:Table
+                id="readonly_eduBiz"
+				rows="{bizModel>/}" 
+				selectionMode="MultiToggle"
+				visibleRowCount="{path: 'bizModel>/', formatter: '.formatter.getRowCount'}"
+				paste="onPaste"
+				ariaLabelledBy="title">
+                <t:extension>
+
+                    <m:OverflowToolbar>
+                        <m:ToolbarSpacer />
+                        <m:ToolbarSpacer />
+
+                        <m:Label required="true" text="승진본부" />                     
+                        <m:Select
+                            id="selectDivision"
+                            forceSelection="true"
+                            change="onChangeDiv"
+                            items="{DivInfo>/}">
+                            <core:Item key="{DivInfo>key}" text="{DivInfo>text}" />
+                        </m:Select>
+                        <m:Label required="true" text="승진대상년도" />                     
+                        <m:Input 
+                            id="plannedYear" class="mandatoryCreate createFields" 
+                            change="onChangePlanedYear"
+                            value="2021" 
+                            maxLength="4" width="8rem" />                     
+                        <m:Button id="create" icon="sap-icon://add-activity" visible="{appLayout>/createBtn/visible}" text="신규 T/O 배분" type="Transparent" press="onCreate"/>
+                        <m:Button icon="sap-icon://edit" press="onUpdateData" type="Transparent" text="기존 T/O 수정" />
+                        <m:Button icon="sap-icon://collections-management" press="onCalculateData" type="Transparent" text="비율/총계" />   
+                        <m:Button icon="sap-icon://decline" press="onDeleteData" type="Transparent" text="전체 데이타 삭제" />
+                    </m:OverflowToolbar>
+                </t:extension>               
+				<t:columns>
+					<t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+						<m:Label text="승진대상년도" />
+						<t:template>
+							<m:Input value="{bizModel>PROMYY}" />
+						</t:template>
+                    </t:Column>    
+					<t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  visible="false" >
+						<m:Label text="승진대상사업부" />
+						<t:template>
+							<m:Input value="{bizModel>PROMDIV}"/>
+						</t:template>
+					</t:Column>
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" visible="false" >
+						<m:Label text="일련번호" />
+						<t:template>
+							<m:Input value="{bizModel>PROMSNO}" />
+						</t:template>
+					</t:Column>         
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  visible="false" >
+						<m:Label text="승진대상사업부-1" />
+						<t:template>
+							<m:Input value="{bizModel>PROMDEP1}" />
+						</t:template>
+					</t:Column>        
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  visible="false" >
+						<m:Label text="승진대상사업부-2" />
+						<t:template>
+							<m:Input value="{bizModel>PROMDEP2}" />
+						</t:template>
+					</t:Column>                   
+					<t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+						<m:Label text="승진구분" />
+						<t:template>
+							<m:Input value="{bizModel>PROMTYP}" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  headerSpan="3">
+                        <t:multiLabels>
+                            <m:Label id="DEPTNAME1-1" text="{DEPNAME1}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                            <m:Label text="배분T/O" textAlign="Center" width="100%" />
+                        </t:multiLabels>                        
+                        <t:template>
+                            <m:Input value="{bizModel>PROMHDL1}" />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+                            <t:multiLabels>
+                                <m:Label id="DEPTNAME1-2" text="{DEPNAME1}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="대상" textAlign="Center" width="100%" />
+                            </t:multiLabels>    
+                            <t:template>
+                                <m:Input value="{bizModel>PROMTGL1}" />
+                            </t:template>
+                    </t:Column>       
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+                            <t:multiLabels>
+                                <m:Label id="DEPTNAME1-3" text="{DEPNAME1}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="비율" textAlign="Center" width="100%" />
+                            </t:multiLabels>                               
+                            <t:template>
+                                <m:Input value="{bizModel>PROMRIO1}" />
+                            </t:template>
+                    </t:Column>
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  headerSpan="3">
+
+                        <t:multiLabels>
+                                <m:Label id="DEPTNAME2-1" text="{DEPNAME2}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="배분T/O 2" textAlign="Center" width="100%" />
+                            </t:multiLabels>                        
+                            <t:template>
+                                <m:Input value="{bizModel>PROMHDL2}" />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+                            <t:multiLabels>
+                                <m:Label id="DEPTNAME2-2" text="{DEPNAME2}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="대상 2" textAlign="Center" width="100%" />
+                            </t:multiLabels>    
+                            <t:template>
+                                <m:Input value="{bizModel>PROMTGL2}" />
+                            </t:template>
+                    </t:Column>       
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+                            <t:multiLabels>
+                                <m:Label id="DEPTNAME2-3" text="{DEPNAME2}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="비율 2" textAlign="Center" width="100%" />
+                            </t:multiLabels>                               
+                            <t:template>
+                                <m:Input value="{bizModel>PROMRIO2}" />
+                            </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

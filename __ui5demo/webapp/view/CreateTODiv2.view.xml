@@ -1,0 +1,137 @@
+<mvc:View 
+    xmlns:m="sap.m" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:u="sap.ui.unified" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    controllerName="hkmc.poc.ns.ui5demo.controller.CreateTODiv2" 
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <m:Page id="eduBizCreate">
+		<m:content>
+ 	        <t:Table
+                id="readonly_eduBiz"
+				rows="{newEduBiz2>/}" 
+				paste="onPaste"
+				ariaLabelledBy="title"
+                visibleRowCount="{= ${newEduBiz2>/}.length}">
+                <t:extension>
+                    <m:OverflowToolbar>
+                        <m:ToolbarSpacer />
+                        <m:ToolbarSpacer />
+                        <m:Select
+                            id="selectDivision"
+                            forceSelection="true"
+                            change="onChangeDiv"
+                            items="{DivInfo>/}">
+                            <core:Item key="{DivInfo>key}" text="{DivInfo>text}" />
+                        </m:Select>                   
+                       <m:Button icon="sap-icon://save" press="onInitData" type="Transparent" text="데이타 저장" />
+                       <m:Button icon="sap-icon://sys-add" press="onAddRows" type="Transparent" text="라인 추가" />
+                       <m:Button icon="sap-icon://sys-minus" press="onDeleteRows" type="Transparent" text="라인 삭제" />
+                       <m:Button icon="sap-icon://collections-management" press="onCalculateData" type="Transparent" text="비율/총계" />
+                       <m:Button icon="sap-icon://nav-back" press="onCancel" type="Transparent" text="Back" />                       
+
+                    </m:OverflowToolbar>
+                </t:extension>   
+
+				<t:columns>
+					<t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+						<m:Label text="승진대상년도" />
+						<t:template>
+							<m:Input value="{newEduBiz2>PROMYY}" />
+						</t:template>
+                    </t:Column>    
+					<t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  visible="false">
+						<m:Label text="승진대상사업부" />
+						<t:template>
+							<m:Input value="{newEduBiz2>PROMDIV}"/>
+						</t:template>
+					</t:Column>
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" visible="false" >
+						<m:Label text="일련번호" />
+						<t:template>
+							<m:Input value="{newEduBiz2>PROMSNO}" />
+						</t:template>
+					</t:Column>         
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  visible="false">
+						<m:Label text="승진대상사업부-1" />
+						<t:template>
+							<m:Input value="{newEduBiz2>PROMDEP1}" />
+						</t:template>
+					</t:Column>        
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  visible="false">
+						<m:Label text="승진대상사업부-2" />
+						<t:template>
+							<m:Input value="{newEduBiz2>PROMDEP2}" />
+						</t:template>
+					</t:Column>                   
+					<t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+						<m:Label text="승진구분" />
+						<t:template>
+							<m:Input value="{newEduBiz2>PROMTYP}" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  headerSpan="3">
+                        <t:multiLabels>
+                            <m:Label id="DEPTNAME1-1" text="{DEPNAME1}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                            <m:Label text="배분T/O" textAlign="Center" width="100%" />
+                        </t:multiLabels>                        
+                        <t:template>
+                            <m:Input value="{newEduBiz2>PROMHDL1}" />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+                            <t:multiLabels>
+                                <m:Label id="DEPTNAME1-2" text="{DEPNAME1}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="대상" textAlign="Center" width="100%" />
+                            </t:multiLabels>    
+                            <t:template>
+                                <m:Input value="{newEduBiz2>PROMTGL1}" />
+                            </t:template>
+                    </t:Column>       
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+                            <t:multiLabels>
+                                <m:Label id="DEPTNAME1-3" text="{DEPNAME1}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="비율" textAlign="Center" width="100%" />
+                            </t:multiLabels>                               
+                            <t:template>
+                                <m:Input value="{newEduBiz2>PROMRIO1}" />
+                            </t:template>
+                    </t:Column>
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center"  headerSpan="3">
+
+                        <t:multiLabels>
+                                <m:Label id="DEPTNAME2-1" text="{DEPNAME2}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="배분T/O 2" textAlign="Center" width="100%" />
+                            </t:multiLabels>                        
+                            <t:template>
+                                <m:Input value="{newEduBiz2>PROMHDL2}" />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+                            <t:multiLabels>
+                                <m:Label id="DEPTNAME2-2" text="{DEPNAME2}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="대상 2" textAlign="Center" width="100%" />
+                            </t:multiLabels>    
+                            <t:template>
+                                <m:Input value="{newEduBiz2>PROMTGL2}" />
+                            </t:template>
+                    </t:Column>       
+                    <t:Column width="auto" flexible="true" resizable="true" autoResizable="true" hAlign="Center" >
+                            <t:multiLabels>
+                                <m:Label id="DEPTNAME2-3" text="{DEPNAME2}" textAlign="Center" width="100%" class="tableHeaderWrap"/>
+                                <m:Label text="비율 2" textAlign="Center" width="100%" />
+                            </t:multiLabels>                               
+                            <t:template>
+                                <m:Input value="{newEduBiz2>PROMRIO2}" />
+                            </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

@@ -1,0 +1,60 @@
+_schema-version: "3.2"
+ID: hkmc-poc
+version: 0.0.1
+modules:
+- name: hkmc-poc-approuter
+  type: approuter.nodejs
+  path: hkmc-poc-approuter
+  requires:
+  - name: hkmc-poc_html_repo_runtime
+  - name: hkmc-demo-apiaccess
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+  properties: 								
+    httpHeaders: [{"X-Frame-Options": "ALLOW-FROM performancemanager.successfactors.eu"}]
+    # SEND_XPARAMETERS: false
+    CJ_PROTECT_WHITELIST: [{"host": "*.successfactors.eu"}]    
+- name: hkmc-poc_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: hkmc-poc_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - ui5demo-content.zip
+      name: ui5demo
+      target-path: resources/
+- name: ui5demo
+  type: html5
+  path: ui5demo
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+resources:
+- name: hkmc-poc_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: hkmc-poc_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: hkmc-demo-apiaccess
+  parameters:
+    service: apiaccess
+    service-plan: xsuaa
+  type: org.cloudfoundry.existing-service    
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install

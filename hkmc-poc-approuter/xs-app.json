@@ -1,0 +1,27 @@
+{
+    "welcomeFile": "../ui5demo/index.html",
+    "authenticationMethod": "none",
+    "routes": [
+        {
+            "source": "^/odata-hkmc/(.*)$",
+            "target": "$1",
+            "destination": "odata-hkmc"
+        },   
+        {
+            "source": "^/hcodata/(.*)$",
+            "target": "$1",
+            "destination": "hcodata"
+        },
+        {
+            "source": "^/hcodata2/(.*)$",
+            "target": "$1",
+            "destination": "hcodata2"
+        },
+        {
+            "source": "^/ui5demo/(.*)$",
+            "target": "$1",
+            "authenticationType": "none",
+            "localDir": "../ui5demo/webapp"
+        }
+    ]
+}
